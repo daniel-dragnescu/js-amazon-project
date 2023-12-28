@@ -61,14 +61,15 @@ products.forEach((product) => {
         Added
       </div>
 
-      <button class="add-to-cart-button button-primary">
+      <button class="add-to-cart-button button-primary js-add-to-cart"
+      data-product-id="${product.id}">
         Add to Cart
       </button>
     </div>
   `;
 });
 
-console.log(productsHTML); // we combined all the html together
+//console.log(productsHTML); // we combined all the html together
 
 //third step: combine this HTML together and put it on the webpage
 //create a variable at the top with let
@@ -80,3 +81,47 @@ document.querySelector('.js-products-grid')
   .innerHTML = productsHTML; //we generated all the html cu js and then using the dom to put this html inside here(HTML file)
   //now we can remove the divs inside grid from html because we added to js
   //toFixed() - to select how many decimals you want. convert a number into a string
+
+
+  //last step: make it interactive
+
+  document.querySelectorAll('.js-add-to-cart')
+    .forEach((button) => {
+      button.addEventListener('click', () => {
+        //console.log(button.dataset.ProductName); to acces the productname as in the console log
+        const productId = button.dataset.productId;
+
+        let matchingItem; // it is set undefined
+
+        cart.forEach((item) => {   //item = productname, quantity
+          if (productId === item.productId) {
+            matchingItem = item; // this is how to check if in item is already in the cart
+          }
+        });
+
+        if(matchingItem) {
+          matchingItem.quantity += 1; //it it's in the cart, increase the quantity
+        } else {
+          cart.push({
+            productId: productId,
+            quantity: 1
+          });  //if it's not in the cart, add it to the cart
+        }
+        
+        console.log(cart);
+      });
+    });
+
+    //now we add a data atribute in html (data-product-name(data- and the rest is how we want to name it))
+    //it allow us to attach any info to an element
+    //when we console log, we can see the name atribute inside the element, next to console.
+    //each of the button have this atribute and it is equal to the product name (his name)
+    //we can attach anything, not just name
+    //when we click the button, we can get the name, and tell us which product will should add to the cart
+    //dataset give us all the data atributes that are attatched to this button (data-product-name)
+
+    //we first attached the product name to the button using data atribute and then, when we click the button
+    //we got the product name out and then we added the product to the cart
+
+
+    //next step: we want to add multiple quantity for one product, not the same product for many times.
