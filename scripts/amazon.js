@@ -88,12 +88,12 @@ document.querySelector('.js-products-grid')
   document.querySelectorAll('.js-add-to-cart')
     .forEach((button) => {
       button.addEventListener('click', () => {
-        //console.log(button.dataset.ProductName); to acces the productname as in the console log
+        //console.log(button.dataset.productId); to acces the productId as in the console log
         const productId = button.dataset.productId;
 
         let matchingItem; // it is set undefined
 
-        cart.forEach((item) => {   //item = productname, quantity
+        cart.forEach((item) => {   //item = productid, quantity
           if (productId === item.productId) {
             matchingItem = item; // this is how to check if in item is already in the cart
           }
@@ -108,7 +108,17 @@ document.querySelector('.js-products-grid')
           });  //if it's not in the cart, add it to the cart
         }
         
-        console.log(cart);
+
+        //(A) Total quantity
+        let cartQuantity = 0;
+
+        cart.forEach((item) => {  //this is gonna loop through each object in the cart
+          cartQuantity += item.quantity; //we add the the item quantity to the variable let
+        });
+
+        //(B) Put the quantity on the page
+        document.querySelector('.js-cart-quantity')
+          .innerHTML = cartQuantity;
       });
     });
 
@@ -125,3 +135,8 @@ document.querySelector('.js-products-grid')
 
 
     //next step: we want to add multiple quantity for one product, not the same product for many times.
+
+
+    //(A)next step: calculate the quantity from the cart from above right
+    //(B)Put the quantity on the page, using the dom.
+
