@@ -1,3 +1,8 @@
+import {cart} from '../data/cart.js';  //.. - to get out to the folder to the main folder (javascript-amazon...)
+
+//import {cart as myCart} from '.../data/cart/js;
+//const cart = []; here we have naming conflict again. We use 'as' and another name to change it and avoid naming
+
 //first step: save the data from html to js
 //create an array because represents an list
 //this is called data structure (combination of arrays and objects)

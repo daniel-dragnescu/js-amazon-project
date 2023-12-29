@@ -1,1 +1,1 @@
-const cart = [];
+export const cart = []; //accesed outisde of this file/ used outside of this js
