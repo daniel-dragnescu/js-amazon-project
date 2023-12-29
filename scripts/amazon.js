@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';  //.. - to get out to the folder to the main folder (javascript-amazon...)
+import {cart, addToCart} from '../data/cart.js';  //.. - to get out to the folder to the main folder (javascript-amazon...)
 import {products} from '../data/products.js';
 
 //import {cart as myCart} from '.../data/cart/js;
@@ -91,40 +91,28 @@ document.querySelector('.js-products-grid')
 
   //last step: make it interactive
 
+  
+  
+  function updateCartQuantity() {
+    //(A) Total quantity
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {  //this is gonna loop through each object in the cart
+      cartQuantity += cartItem.quantity; //we add the the item quantity to the variable let
+    });
+
+    //(B) Put the quantity on the page
+    document.querySelector('.js-cart-quantity')
+      .innerHTML = cartQuantity;
+  }
+
   document.querySelectorAll('.js-add-to-cart')
     .forEach((button) => {
       button.addEventListener('click', () => {
         //console.log(button.dataset.productId); to acces the productId as in the console log
         const productId = button.dataset.productId;
-
-        let matchingItem; // it is set undefined
-
-        cart.forEach((item) => {   //item = productid, quantity
-          if (productId === item.productId) {
-            matchingItem = item; // this is how to check if in item is already in the cart
-          }
-        });
-
-        if(matchingItem) {
-          matchingItem.quantity += 1; //it it's in the cart, increase the quantity
-        } else {
-          cart.push({
-            productId: productId,
-            quantity: 1
-          });  //if it's not in the cart, add it to the cart
-        }
-        
-
-        //(A) Total quantity
-        let cartQuantity = 0;
-
-        cart.forEach((item) => {  //this is gonna loop through each object in the cart
-          cartQuantity += item.quantity; //we add the the item quantity to the variable let
-        });
-
-        //(B) Put the quantity on the page
-        document.querySelector('.js-cart-quantity')
-          .innerHTML = cartQuantity;
+        addToCart(productId);
+        updateCartQuantity();        
       });
     });
 
