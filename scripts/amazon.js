@@ -1,5 +1,6 @@
 import {cart, addToCart} from '../data/cart.js';  //.. - to get out to the folder to the main folder (javascript-amazon...)
 import {products} from '../data/products.js';
+import {formatCurrency} from './utils/money.js';
 
 //import {cart as myCart} from '.../data/cart/js;
 //const cart = []; here we have naming conflict again. We use 'as' and another name to change it and avoid naming
@@ -42,7 +43,7 @@ products.forEach((product) => {
       </div>
 
       <div class="product-price">
-        $${(product.priceCents / 100).toFixed(2)}
+        $${formatCurrency(product.priceCents)}
       </div>
 
       <div class="product-quantity-container">
