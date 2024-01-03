@@ -3,15 +3,18 @@ export let cart = JSON.parse(localStorage.getItem('cart')); //we need to get the
 //if not cart/we dont have a cart in local storage, json.parse we give as null
 //in this case, not null will be truthy and will run the code inside the {}
 //if the cart get the value null, we run the code from {}. we have null, so we run the {}
-if(!cart) {
+if(!cart) {  //!cart = is the null error
   cart = [{
     productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
     quantity: 2,
+    deliveryOptionId: '1'
   }, {
     productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
-    quantity: 1
+    quantity: 1,
+    deliveryOptionId: '2'
   }];
-}
+}  //now, if the cart is empty, we get a default value
+
  //accesed outisde of this file/ used outside of this js
 //cart is variable, so it resets when we reload the page or go to different page. we need to localstorage
 
@@ -34,7 +37,8 @@ export function addToCart(productId) {
   } else {
     cart.push({
       productId: productId,
-      quantity: 1
+      quantity: 1,
+      deliveryOptionId: '1'
     });  //if it's not in the cart, add it to the cart
   }
 
