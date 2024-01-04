@@ -1,4 +1,4 @@
-export function getProduct (productId) {
+export function getProduct(productId) {
   let matchingProduct;
 
   products.forEach((product) => { //if they are equal, we get the acces to all properties of all objects (name, rating etc)
