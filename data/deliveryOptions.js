@@ -23,3 +23,7 @@ export function getDeliveryOption(deliveryOptionId) {
 
   return deliveryOption;
 }
+
+
+
+//forEach = loop through the array and for each of this the values from the array, will save the value in the parameter and run the function
