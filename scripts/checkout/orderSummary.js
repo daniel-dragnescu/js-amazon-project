@@ -5,6 +5,7 @@ import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'; //default export = just 1 file
 //scripttag - when we get the url and add in html js like first time, with no export
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
+import {renderPaymentSummary} from './paymentSummary.js';
 
 hello();
 
@@ -137,6 +138,8 @@ document.querySelectorAll('.js-delete-link')
       const container = document.querySelector(`.js-cart-item-container-${productId}`);
       //console.log(container); we getting the correct item that we want to delete
       container.remove();
+
+      renderPaymentSummary();
     });
   });
 
@@ -148,6 +151,7 @@ document.querySelectorAll('.js-delete-link')
         const {productId, deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();
+        renderPaymentSummary();
       });
     });
   }
