@@ -1,4 +1,9 @@
-export let cart = JSON.parse(localStorage.getItem('cart')); //we need to get the cart from local storage. we need one string, and we have to get the value back from a string with parse
+export let cart;
+
+loadFromStorage();
+
+export function loadFromStorage() {
+  cart = JSON.parse(localStorage.getItem('cart')); //we need to get the cart from local storage. we need one string, and we have to get the value back from a string with parse
 
 //if not cart/we dont have a cart in local storage, json.parse we give as null
 //in this case, not null will be truthy and will run the code inside the {}
@@ -17,6 +22,7 @@ if(!cart) {  //!cart = is the null error
 
  //accesed outisde of this file/ used outside of this js
 //cart is variable, so it resets when we reload the page or go to different page. we need to localstorage
+}
 
 function saveToStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));  //local storage needs 2 strings
