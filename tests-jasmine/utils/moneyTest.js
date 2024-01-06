@@ -1,5 +1,7 @@
 import {formatCurrency} from "../../scripts/utils/money.js";
 
+//unit tests = testing 1 piece of the code
+
 //describe - create a test suite. You have to put a name
 //it - create a test and you have to put a name to the test
 //expect - insert the code that you want to test
