@@ -64,7 +64,9 @@ describe('test suite: renderOrderSummary', function() {
   });
 });
 
-//toContain: checks if the value contains the string from inside to him
+//toContain: checks if the value contains the string from inside to him      
 //integration test = tests many pieces/units of code working together
-//Hooks- lets us run some code before each test. we can share code between these 2 test with hook
-//beforeEach - will run this function before each of the tests
+//Hooks- lets us run/some code before each test. we can share code between these 2 test with hook
+//beforeEach - will run this function before each of the test
+
+//Fn + Delete to remove a single caracter
